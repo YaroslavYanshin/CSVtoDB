@@ -1,0 +1,12 @@
+#ignoring folders bin and obj
+bin/
+obj/
+*.exe
+*.exe
+*.pdb
+*.exe
+*.pdb
+NewYearsPresent.Demo/obj/
+NewYearsPresent.Demo/bin/
+NewYearsPresent/bin/
+NewYearsPresent/obj/
