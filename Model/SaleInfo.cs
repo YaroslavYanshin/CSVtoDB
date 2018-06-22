@@ -15,7 +15,7 @@ namespace Model
     public partial class SaleInfo
     {
         public int Id { get; set; }
-        public string Date { get; set; }
+        public System.DateTime Date { get; set; }
         public string Amount { get; set; }
         public string ManagerId { get; set; }
         public string ClientId { get; set; }
