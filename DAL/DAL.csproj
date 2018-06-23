@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C578C84E-EFE7-4E6E-9381-131F87A31135}</ProjectGuid>
+    <ProjectGuid>{C5F01666-5711-4EBB-BB48-AAE3D951FEC7}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>DAL</RootNamespace>
     <AssemblyName>DAL</AssemblyName>
@@ -55,10 +55,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ClientRepository.cs" />
+    <Compile Include="Repository\EFUnitOfWork.cs" />
     <Compile Include="Repository\Interfaces\IModelRepository.cs" />
     <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Repository\ManagerRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\SaleInfoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

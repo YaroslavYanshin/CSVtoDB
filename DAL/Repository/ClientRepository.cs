@@ -1,22 +1,22 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Model;
 
-namespace DAL.Repository.Interfaces
+namespace DAL.Repository
 {
-    public class ClientRepository : IModelRepository<Models.Client>
+    public class ClientRepository
     {
         private DBModelContainer _context;
 
-        private Client ToEntity(Models.Client client)
+        private Model.Client ToEntity(DAL.Models.Client client)
         {
-            return new Client() { FullName = client.FullName };
+            return new Model.Client() { FullName = client.FullName };
         }
 
-        private Models.Client ToObject(Client client)
+        private DAL.Models.Client ToObject(Model.Client client)
         {
-            return new Models.Client() { FullName = client.FullName };
+            return new DAL.Models.Client() { FullName = client.FullName };
         }
 
         public ClientRepository(DBModelContainer context)
@@ -24,12 +24,12 @@ namespace DAL.Repository.Interfaces
             _context = context;
         }
 
-        public void Add(Models.Client client)
+        public void Add(DAL.Models.Client client)
         {
             _context.Clients.Add(ToEntity(client));
         }
 
-        public int? GetId(Models.Client client)
+        public int? GetId(DAL.Models.Client client)
         {
             var tmp = _context.Clients.FirstOrDefault(c => (c.FullName == client.FullName));
             if (tmp == null)
@@ -42,12 +42,12 @@ namespace DAL.Repository.Interfaces
             }
         }
 
-        public IEnumerable<Models.Client> GetAll()
+        public IEnumerable<DAL.Models.Client> GetAll()
         {
-            return _context.Clients.Select(c => new Models.Client() { Id = c.Id, FullName = c.FullName }).ToArray();
+            return _context.Clients.Select(c => new DAL.Models.Client() { Id = c.Id, FullName = c.FullName }).ToArray();
         }
 
-        public Models.Client GetById(int Id)
+        public DAL.Models.Client GetById(int Id)
         {
             return ToObject(_context.Clients.FirstOrDefault(c => (c.Id == Id)));
         }
@@ -57,4 +57,5 @@ namespace DAL.Repository.Interfaces
             throw new NotImplementedException();
         }
     }
+}
 }

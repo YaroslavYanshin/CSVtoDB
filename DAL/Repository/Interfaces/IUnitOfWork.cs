@@ -1,14 +1,13 @@
 ﻿using System;
-using DAL.Models;
 
 namespace DAL.Repository.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    interface IUnitOfWork : IDisposable
     {
-        IModelRepository<Client> Clients { get; }
-        IModelRepository<Manager> Managers { get; }
-        IModelRepository<Product> Products { get; }
-        IModelRepository<SaleInfo> SaleInfo { get; }
+        IModelRepository<DAL.Models.Client> Clients { get; }
+        IModelRepository<DAL.Models.Manager> Managers { get; }
+        IModelRepository<DAL.Models.Product> Products { get; }
+        IModelRepository<DAL.Models.SaleInfo> SalesInfo { get; }
 
         void Save();
     }

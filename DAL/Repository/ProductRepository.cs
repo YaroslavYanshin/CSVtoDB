@@ -6,18 +6,18 @@ using System.Linq;
 
 namespace DAL.Repository
 {
-    public class ProductRepository : IModelRepository<Models.Product>
+    public class ProductRepository : IModelRepository<DAL.Models.Product>
     {
         private DBModelContainer _context;
 
-        private Product ToEntity(Models.Product product)
+        private Model.Product ToEntity(DAL.Models.Product product)
         {
-            return new Product() { Name = product.Name };
+            return new Model.Product() { Name = product.Name };
         }
 
-        private Models.Product ToObject(Product product)
+        private DAL.Models.Product ToObject(Model.Product product)
         {
-            return new Models.Product() { Name = product.Name };
+            return new DAL.Models.Product() { Name = product.Name };
         }
 
         public ProductRepository(DBModelContainer context)
@@ -25,12 +25,12 @@ namespace DAL.Repository
             _context = context;
         }
 
-        public void Add(Models.Product product)
+        public void Add(DAL.Models.Product product)
         {
             _context.Products.Add(ToEntity(product));
         }
 
-        public int? GetId(Models.Product product)
+        public int? GetId(DAL.Models.Product product)
         {
             var tmp = _context.Products.FirstOrDefault(p => (p.Name == product.Name));
             if (tmp == null)
@@ -43,12 +43,12 @@ namespace DAL.Repository
             }
         }
 
-        public IEnumerable<Models.Product> GetAll()
+        public IEnumerable<DAL.Models.Product> GetAll()
         {
-            return _context.Products.Select(p => new Models.Product() { Id = p.Id, Name = p.Name }).ToArray();
+            return _context.Products.Select(p => new DAL.Models.Product() { Id = p.Id, Name = p.Name }).ToArray();
         }
 
-        public Models.Product GetById(int Id)
+        public DAL.Models.Product GetById(int Id)
         {
             return ToObject(_context.Products.FirstOrDefault(p => (p.Id == Id)));
         }

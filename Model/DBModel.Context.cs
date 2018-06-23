@@ -28,6 +28,6 @@ namespace Model
         public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<SaleInfo> SaleInfoes { get; set; }
+        public virtual DbSet<SaleInfo> SalesInfo { get; set; }
     }
 }

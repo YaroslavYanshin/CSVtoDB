@@ -3,21 +3,20 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace DAL.Repository
 {
-    public class ManagerRepository : IModelRepository<Models.Manager>
+    public class ManagerRepository : IModelRepository<DAL.Models.Manager>
     {
         private DBModelContainer _context;
 
-        public Manager ToEntity(DAL.Models.Manager manager)
+        public Model.Manager ToEntity(DAL.Models.Manager manager)
         {
-            return new Manager() { SecondName = manager.SecondName };
+            return new Model.Manager() { SecondName = manager.SecondName };
         }
 
-        private Models.Manager ToObject(Manager manager)
+        private DAL.Models.Manager ToObject(Model.Manager manager)
         {
-            return new Models.Manager() { SecondName = manager.SecondName };
+            return new DAL.Models.Manager() { SecondName = manager.SecondName };
         }
 
         public ManagerRepository(DBModelContainer context)
@@ -25,12 +24,12 @@ namespace DAL.Repository
             _context = context;
         }
 
-        public void Add(Models.Manager manager)
+        public void Add(DAL.Models.Manager manager)
         {
             _context.Managers.Add(ToEntity(manager));
         }
 
-        public int? GetId(Models.Manager manager)
+        public int? GetId(DAL.Models.Manager manager)
         {
             var tmp = _context.Managers.FirstOrDefault(m => (m.SecondName == manager.SecondName));
             if (tmp == null)
@@ -43,9 +42,9 @@ namespace DAL.Repository
             }
         }
 
-        public IEnumerable<Models.Manager> GetAll()
+        public IEnumerable<DAL.Models.Manager> GetAll()
         {
-            return _context.Managers.Select(m => new Models.Manager() { Id = m.Id, SecondName = m.SecondName }).ToArray();
+            return _context.Managers.Select(m => new DAL.Models.Manager() { Id = m.Id, SecondName = m.SecondName }).ToArray();
         }
 
         public DAL.Models.Manager GetById(int Id)
