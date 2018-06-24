@@ -24,73 +24,57 @@
     {
       "Analyzer": "ImmutableMethodsAnalyzer",
       "OccurrenceCount": 1,
-      "Exceptions": {
-        "ArgumentException": "Синтаксический узел не находится в синтаксическом дереве.\r\n\r\nSource:\r\npublic void Add(DAL.Models.Client client)\r\n{\r\n    _context.Clients.Add(ToEntity(client));\r\n}"
-      },
-      "SentToServer": false,
+      "Exceptions": null,
+      "SentToServer": true,
       "InstallationName": "YAROSLAV"
     },
     {
       "Analyzer": "OrderByWhereLinqAnalyzer",
       "OccurrenceCount": 2,
-      "Exceptions": {
-        "ArgumentException": "Синтаксический узел не находится в синтаксическом дереве.\r\n\r\nSource:\r\npublic void Add(DAL.Models.Client client)\r\n{\r\n    _context.Clients.Add(ToEntity(client));\r\n}"
-      },
-      "SentToServer": false,
+      "Exceptions": null,
+      "SentToServer": true,
       "InstallationName": "YAROSLAV"
     },
     {
       "Analyzer": "UseIsAInsteadOfIsAssignableFromAnalyzer",
       "OccurrenceCount": 2,
-      "Exceptions": {
-        "ArgumentException": "Синтаксический узел не находится в синтаксическом дереве.\r\n\r\nSource:\r\npublic void Add(DAL.Models.Client client)\r\n{\r\n    _context.Clients.Add(ToEntity(client));\r\n}"
-      },
-      "SentToServer": false,
+      "Exceptions": null,
+      "SentToServer": true,
       "InstallationName": "YAROSLAV"
     },
     {
       "Analyzer": "UseMaxOrNullInsteadOfMaxOrDefaultWithStructsAnalyzer",
       "OccurrenceCount": 1,
-      "Exceptions": {
-        "ArgumentException": "Синтаксический узел не находится в синтаксическом дереве.\r\n\r\nSource:\r\npublic void Add(DAL.Models.Client client)\r\n{\r\n    _context.Clients.Add(ToEntity(client));\r\n}"
-      },
-      "SentToServer": false,
+      "Exceptions": null,
+      "SentToServer": true,
       "InstallationName": "YAROSLAV"
     },
     {
       "Analyzer": "UseMaxMinInsteadOfWithMaxMinAnalyzer",
       "OccurrenceCount": 1,
-      "Exceptions": {
-        "ArgumentException": "Синтаксический узел не находится в синтаксическом дереве.\r\n\r\nSource:\r\npublic IEnumerable<DAL.Models.Client> GetAll()\r\n{\r\n    return _context.Clients.Select(c => new DAL.Models.Client()\r\n    {Id = c.Id, FullName = c.FullName}).ToArray();\r\n}"
-      },
-      "SentToServer": false,
+      "Exceptions": null,
+      "SentToServer": true,
       "InstallationName": "YAROSLAV"
     },
     {
       "Analyzer": "RepeatedExpressionAnalyzer",
       "OccurrenceCount": 2,
-      "Exceptions": {
-        "ArgumentException": "Синтаксический узел не находится в синтаксическом дереве.\r\n\r\nSource:\r\n"
-      },
-      "SentToServer": false,
+      "Exceptions": null,
+      "SentToServer": true,
       "InstallationName": "YAROSLAV"
     },
     {
       "Analyzer": "BooleanParameterAnalyzer",
       "OccurrenceCount": 1,
-      "Exceptions": {
-        "ArgumentException": "Синтаксический узел не находится в синтаксическом дереве.\r\n\r\nSource:\r\n"
-      },
-      "SentToServer": false,
+      "Exceptions": null,
+      "SentToServer": true,
       "InstallationName": "YAROSLAV"
     },
     {
       "Analyzer": "FloatVariablesComparisonAnalyser",
       "OccurrenceCount": 1,
-      "Exceptions": {
-        "ArgumentException": "Синтаксический узел не находится в синтаксическом дереве.\r\n\r\nSource:\r\npublic void Dispose()\r\n{\r\n    if (_context != null)\r\n    {\r\n        _context.Dispose();\r\n        _context = null;\r\n    }\r\n}"
-      },
-      "SentToServer": false,
+      "Exceptions": null,
+      "SentToServer": true,
       "InstallationName": "YAROSLAV"
     }
   ]
