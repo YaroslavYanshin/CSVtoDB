@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace DAL.Models
 {
     public class Client

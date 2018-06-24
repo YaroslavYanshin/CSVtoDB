@@ -2,7 +2,7 @@
 
 namespace DAL.Repository.Interfaces
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         IModelRepository<DAL.Models.Client> Clients { get; }
         IModelRepository<DAL.Models.Manager> Managers { get; }
