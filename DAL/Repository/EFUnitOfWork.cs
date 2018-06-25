@@ -1,6 +1,7 @@
 ﻿using DAL.Repository.Interfaces;
 using Model;
 using System;
+using DAL.Models;
 
 namespace DAL.Repository
 {

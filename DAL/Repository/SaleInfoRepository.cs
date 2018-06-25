@@ -16,10 +16,10 @@ namespace DAL.Repository
             return new Model.SaleInfo()
             {
                 Date = saleInfo.Date,
-                ManagerId = saleInfo.ManagerId,
-                ClientId = saleInfo.ClientId,
-                ProductId = saleInfo.ProductId,
-                Amount = saleInfo.Amount
+                ManagerId = Convert.ToString(saleInfo.ManagerId),
+                ClientId = Convert.ToString(saleInfo.ClientId),
+                ProductId = Convert.ToString(saleInfo.ProductId),
+                Amount = Convert.ToString(saleInfo.Amount)
             };
         }
 
@@ -28,10 +28,10 @@ namespace DAL.Repository
             return new DAL.Models.SaleInfo()
             {
                 Date = saleInfo.Date,
-                ManagerId = saleInfo.ManagerId,
-                ClientId = saleInfo.ClientId,
-                ProductId = saleInfo.ProductId,
-                Amount = saleInfo.Amount
+                ManagerId = Convert.ToInt32( saleInfo.ManagerId),
+                ClientId = Convert.ToInt32( saleInfo.ClientId),
+                ProductId = Convert.ToInt32( saleInfo.ProductId),
+                Amount = Convert.ToDouble( saleInfo.Amount)
             };
         }
 
@@ -64,10 +64,10 @@ namespace DAL.Repository
             {
                 Id = s.Id,
                 Date = s.Date,
-                ManagerId = s.ManagerId,
-                ClientId = s.ClientId,
-                ProductId = s.ProductId,
-                Amount = s.Amount
+                ManagerId = Convert.ToInt32(s.ManagerId),
+                ClientId = Convert.ToInt32(s.ClientId),
+                ProductId = Convert.ToInt32(s.ProductId),
+                Amount = Convert.ToDouble( s.Amount)
             }
                                             )
                                      .ToArray();
@@ -82,10 +82,10 @@ namespace DAL.Repository
         {
             var sale = _context.SalesInfo.FirstOrDefault(s => (s.Id == item.Id));
             sale.Date = item.Date;
-            sale.ManagerId = item.ManagerId;
-            sale.ClientId = item.ClientId;
-            sale.ProductId = item.ProductId;
-            sale.Amount = item.Amount;
+            sale.ManagerId = Convert.ToString(item.ManagerId);
+            sale.ClientId = Convert.ToString(item.ClientId);
+            sale.ProductId = Convert.ToString(item.ProductId);
+            sale.Amount = Convert.ToString(item.Amount);
         }
     }
 }

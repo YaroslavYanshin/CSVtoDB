@@ -1,11 +1,12 @@
-﻿using Model;
+﻿using DAL.Repository.Interfaces;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DAL.Repository
 {
-    public class ClientRepository
+    public class ClientRepository : IModelRepository<DAL.Models.Client>
     {
         private DBModelContainer _context;
 
@@ -58,4 +59,4 @@ namespace DAL.Repository
         }
     }
 }
-}
+

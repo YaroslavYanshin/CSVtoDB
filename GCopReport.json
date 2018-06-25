@@ -2,7 +2,7 @@
   "Items": [
     {
       "Analyzer": "LongMethodAnalyzer",
-      "OccurrenceCount": 5,
+      "OccurrenceCount": 6,
       "Exceptions": null,
       "SentToServer": true,
       "InstallationName": "YAROSLAV"
