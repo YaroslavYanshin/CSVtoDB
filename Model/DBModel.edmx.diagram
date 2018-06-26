@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7e483635f3be40ff88491a3e38c37745" Name="Diagram1" >
-        <EntityTypeShape EntityType="DBModel.Manager" Width="1.5" PointX="2.875" PointY="4.25" />
-        <EntityTypeShape EntityType="DBModel.Client" Width="1.5" PointX="5.875" PointY="4.25" />
-        <EntityTypeShape EntityType="DBModel.Product" Width="1.5" PointX="9.125" PointY="4.375" />
-        <EntityTypeShape EntityType="DBModel.SaleInfo" Width="1.5" PointX="5.875" PointY="0.5" />
+      <Diagram DiagramId="872bba94a59645bbb0edc3e46281ce49" Name="Diagram1" >
+        <EntityTypeShape EntityType="DBModel.SaleInfo" Width="1.5" PointX="6.125" PointY="3.25" />
+        <EntityTypeShape EntityType="DBModel.Manager" Width="1.5" PointX="3" PointY="7" />
+        <EntityTypeShape EntityType="DBModel.Client" Width="1.5" PointX="6.125" PointY="7" />
+        <EntityTypeShape EntityType="DBModel.Product" Width="1.5" PointX="9.125" PointY="7" />
         <AssociationConnector Association="DBModel.ManagerSaleInfo" />
         <AssociationConnector Association="DBModel.ClientSaleInfo" />
         <AssociationConnector Association="DBModel.ProductSaleInfo" />

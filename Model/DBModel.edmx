@@ -6,23 +6,37 @@
     <edmx:StorageModels>
     <Schema Namespace="DBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="DBModelStoreContainer">
+    <EntitySet Name="SalesInfo" EntityType="DBModel.Store.SalesInfo" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Managers" EntityType="DBModel.Store.Managers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Clients" EntityType="DBModel.Store.Clients" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Products" EntityType="DBModel.Store.Products" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SaleInfoes" EntityType="DBModel.Store.SaleInfoes" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ManagerSaleInfo" Association="DBModel.Store.ManagerSaleInfo">
       <End Role="Manager" EntitySet="Managers" />
-      <End Role="SaleInfo" EntitySet="SaleInfoes" />
+      <End Role="SaleInfo" EntitySet="SalesInfo" />
     </AssociationSet>
     <AssociationSet Name="ClientSaleInfo" Association="DBModel.Store.ClientSaleInfo">
       <End Role="Client" EntitySet="Clients" />
-      <End Role="SaleInfo" EntitySet="SaleInfoes" />
+      <End Role="SaleInfo" EntitySet="SalesInfo" />
     </AssociationSet>
     <AssociationSet Name="ProductSaleInfo" Association="DBModel.Store.ProductSaleInfo">
       <End Role="Product" EntitySet="Products" />
-      <End Role="SaleInfo" EntitySet="SaleInfoes" />
+      <End Role="SaleInfo" EntitySet="SalesInfo" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="SalesInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Amount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ManagerId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClientId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Manager_Id" Type="int" Nullable="false" />
+    <Property Name="Client_Id" Type="int" Nullable="false" />
+    <Property Name="Product_Id" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Managers">
     <Key>
       <PropertyRef Name="Id" />
@@ -44,23 +58,9 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="SaleInfoes">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Amount" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ManagerId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ClientId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ProductId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Manager_Id" Type="int" Nullable="false" />
-    <Property Name="Client_Id" Type="int" Nullable="false" />
-    <Property Name="Product_Id" Type="int" Nullable="false" />
-  </EntityType>
   <Association Name="ManagerSaleInfo">
     <End Role="Manager" Type="DBModel.Store.Managers" Multiplicity="1" />
-    <End Role="SaleInfo" Type="DBModel.Store.SaleInfoes" Multiplicity="*" />
+    <End Role="SaleInfo" Type="DBModel.Store.SalesInfo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Manager">
         <PropertyRef Name="Id" />
@@ -72,7 +72,7 @@
   </Association>
   <Association Name="ClientSaleInfo">
     <End Role="Client" Type="DBModel.Store.Clients" Multiplicity="1" />
-    <End Role="SaleInfo" Type="DBModel.Store.SaleInfoes" Multiplicity="*" />
+    <End Role="SaleInfo" Type="DBModel.Store.SalesInfo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Client">
         <PropertyRef Name="Id" />
@@ -84,7 +84,7 @@
   </Association>
   <Association Name="ProductSaleInfo">
     <End Role="Product" Type="DBModel.Store.Products" Multiplicity="1" />
-    <End Role="SaleInfo" Type="DBModel.Store.SaleInfoes" Multiplicity="*" />
+    <End Role="SaleInfo" Type="DBModel.Store.SalesInfo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Product">
         <PropertyRef Name="Id" />
@@ -99,23 +99,37 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="DBModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SalesInfo" EntityType="DBModel.SaleInfo" />
           <EntitySet Name="Managers" EntityType="DBModel.Manager" />
           <EntitySet Name="Clients" EntityType="DBModel.Client" />
           <EntitySet Name="Products" EntityType="DBModel.Product" />
-          <EntitySet Name="SaleInfoes" EntityType="DBModel.SaleInfo" />
           <AssociationSet Name="ManagerSaleInfo" Association="DBModel.ManagerSaleInfo">
             <End Role="Manager" EntitySet="Managers" />
-            <End Role="SaleInfo" EntitySet="SaleInfoes" />
+            <End Role="SaleInfo" EntitySet="SalesInfo" />
           </AssociationSet>
           <AssociationSet Name="ClientSaleInfo" Association="DBModel.ClientSaleInfo">
             <End Role="Client" EntitySet="Clients" />
-            <End Role="SaleInfo" EntitySet="SaleInfoes" />
+            <End Role="SaleInfo" EntitySet="SalesInfo" />
           </AssociationSet>
           <AssociationSet Name="ProductSaleInfo" Association="DBModel.ProductSaleInfo">
             <End Role="Product" EntitySet="Products" />
-            <End Role="SaleInfo" EntitySet="SaleInfoes" />
+            <End Role="SaleInfo" EntitySet="SalesInfo" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="SaleInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <Property Name="Amount" Type="String" Nullable="false" />
+          <Property Name="ManagerId" Type="String" Nullable="false" />
+          <Property Name="ClientId" Type="String" Nullable="false" />
+          <Property Name="ProductId" Type="String" Nullable="false" />
+          <NavigationProperty Name="Manager" Relationship="DBModel.ManagerSaleInfo" FromRole="SaleInfo" ToRole="Manager" />
+          <NavigationProperty Name="Client" Relationship="DBModel.ClientSaleInfo" FromRole="SaleInfo" ToRole="Client" />
+          <NavigationProperty Name="Product" Relationship="DBModel.ProductSaleInfo" FromRole="SaleInfo" ToRole="Product" />
+        </EntityType>
         <EntityType Name="Manager">
           <Key>
             <PropertyRef Name="Id" />
@@ -137,22 +151,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" />
           <NavigationProperty Name="SaleInfoes" Relationship="DBModel.ProductSaleInfo" FromRole="Product" ToRole="SaleInfo" />
-        </EntityType>
-        <EntityType Name="SaleInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Manager" Relationship="DBModel.ManagerSaleInfo" FromRole="SaleInfo" ToRole="Manager" />
-          <NavigationProperty Name="Client" Relationship="DBModel.ClientSaleInfo" FromRole="SaleInfo" ToRole="Client" />
-          <NavigationProperty Name="Product" Relationship="DBModel.ProductSaleInfo" FromRole="SaleInfo" ToRole="Product" />
-          <Property Name="Date" Type="String" Nullable="false" />
-          <Property Name="Amount" Type="String" Nullable="false" />
-          <Property Name="ManagerId" Type="String" Nullable="false" />
-          <Property Name="ClientId" Type="String" Nullable="false" />
-          <Property Name="ProductId" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="ManagerSaleInfo">
           <End Type="DBModel.Manager" Role="Manager" Multiplicity="1" />
@@ -172,6 +172,18 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBModelContainer">
+    <EntitySetMapping Name="SalesInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.SaleInfo)">
+        <MappingFragment StoreEntitySet="SalesInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Managers">
       <EntityTypeMapping TypeName="IsTypeOf(DBModel.Manager)">
         <MappingFragment StoreEntitySet="Managers">
@@ -196,19 +208,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SaleInfoes">
-      <EntityTypeMapping TypeName="IsTypeOf(DBModel.SaleInfo)">
-        <MappingFragment StoreEntitySet="SaleInfoes">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
-          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="ManagerSaleInfo" TypeName="DBModel.ManagerSaleInfo" StoreEntitySet="SaleInfoes">
+    <AssociationSetMapping Name="ManagerSaleInfo" TypeName="DBModel.ManagerSaleInfo" StoreEntitySet="SalesInfo">
       <EndProperty Name="Manager">
         <ScalarProperty Name="Id" ColumnName="Manager_Id" />
       </EndProperty>
@@ -216,7 +216,7 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="ClientSaleInfo" TypeName="DBModel.ClientSaleInfo" StoreEntitySet="SaleInfoes">
+    <AssociationSetMapping Name="ClientSaleInfo" TypeName="DBModel.ClientSaleInfo" StoreEntitySet="SalesInfo">
       <EndProperty Name="Client">
         <ScalarProperty Name="Id" ColumnName="Client_Id" />
       </EndProperty>
@@ -224,7 +224,7 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="ProductSaleInfo" TypeName="DBModel.ProductSaleInfo" StoreEntitySet="SaleInfoes">
+    <AssociationSetMapping Name="ProductSaleInfo" TypeName="DBModel.ProductSaleInfo" StoreEntitySet="SalesInfo">
       <EndProperty Name="Product">
         <ScalarProperty Name="Id" ColumnName="Product_Id" />
       </EndProperty>

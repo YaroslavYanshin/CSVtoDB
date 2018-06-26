@@ -15,7 +15,7 @@ namespace DAL.Repository
         {
             return new Model.SaleInfo()
             {
-                Date = saleInfo.Date,
+                Date = Convert.ToString(saleInfo.Date),
                 ManagerId = Convert.ToString(saleInfo.ManagerId),
                 ClientId = Convert.ToString(saleInfo.ClientId),
                 ProductId = Convert.ToString(saleInfo.ProductId),
@@ -27,7 +27,7 @@ namespace DAL.Repository
         {
             return new DAL.Models.SaleInfo()
             {
-                Date = saleInfo.Date,
+                Date = Convert.ToDateTime(saleInfo.Date),
                 ManagerId = Convert.ToInt32( saleInfo.ManagerId),
                 ClientId = Convert.ToInt32( saleInfo.ClientId),
                 ProductId = Convert.ToInt32( saleInfo.ProductId),
@@ -63,7 +63,7 @@ namespace DAL.Repository
             return _context.SalesInfo.Select(s => new DAL.Models.SaleInfo()
             {
                 Id = s.Id,
-                Date = s.Date,
+                Date = Convert.ToDateTime( s.Date),
                 ManagerId = Convert.ToInt32(s.ManagerId),
                 ClientId = Convert.ToInt32(s.ClientId),
                 ProductId = Convert.ToInt32(s.ProductId),
@@ -81,7 +81,7 @@ namespace DAL.Repository
         public void Update(Models.SaleInfo item)
         {
             var sale = _context.SalesInfo.FirstOrDefault(s => (s.Id == item.Id));
-            sale.Date = item.Date;
+            sale.Date = Convert.ToString(item.Date);
             sale.ManagerId = Convert.ToString(item.ManagerId);
             sale.ClientId = Convert.ToString(item.ClientId);
             sale.ProductId = Convert.ToString(item.ProductId);

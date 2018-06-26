@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BDFD3A2E-CFD2-4308-A169-52484F33AE80}</ProjectGuid>
+    <ProjectGuid>{1DC3AFA4-A26A-4F1B-BC53-4A737FEA6C38}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Model</RootNamespace>
     <AssemblyName>Model</AssemblyName>
@@ -81,9 +81,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
     <EntityDeploy Include="DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
@@ -92,9 +90,6 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DBModel.Context.tt">
@@ -108,6 +103,9 @@
       <LastGenOutput>DBModel.cs</LastGenOutput>
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
