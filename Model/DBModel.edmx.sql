@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/27/2018 15:42:08
+-- Date Created: 06/27/2018 22:08:51
 -- Generated from EDMX file: C:\Users\Ярослав\Documents\Visual Studio 2017\Projects\CSVtoDB\Model\DBModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,11 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_ManagerSaleInfo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SalesInfo] DROP CONSTRAINT [FK_ManagerSaleInfo];
-GO
 IF OBJECT_ID(N'[dbo].[FK_ClientSaleInfo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SalesInfo] DROP CONSTRAINT [FK_ClientSaleInfo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ManagerSaleInfo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SalesInfo] DROP CONSTRAINT [FK_ManagerSaleInfo];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProductSaleInfo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SalesInfo] DROP CONSTRAINT [FK_ProductSaleInfo];
@@ -31,11 +31,11 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Managers]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Managers];
-GO
 IF OBJECT_ID(N'[dbo].[Clients]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Clients];
+GO
+IF OBJECT_ID(N'[dbo].[Managers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Managers];
 GO
 IF OBJECT_ID(N'[dbo].[Products]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Products];
@@ -47,6 +47,17 @@ GO
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
+
+-- Creating table 'SalesInfo'
+CREATE TABLE [dbo].[SalesInfo] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Date] nvarchar(max)  NOT NULL,
+    [Amount] nvarchar(max)  NOT NULL,
+    [Manager_Id] int  NOT NULL,
+    [Client_Id] int  NOT NULL,
+    [Product_Id] int  NOT NULL
+);
+GO
 
 -- Creating table 'Managers'
 CREATE TABLE [dbo].[Managers] (
@@ -69,20 +80,15 @@ CREATE TABLE [dbo].[Products] (
 );
 GO
 
--- Creating table 'SalesInfo'
-CREATE TABLE [dbo].[SalesInfo] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Date] datetime  NOT NULL,
-    [ManagerId] int  NOT NULL,
-    [ClientId] int  NOT NULL,
-    [ProductId] int  NOT NULL,
-	[Amount] float  NOT NULL
-);
-GO
-
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
+
+-- Creating primary key on [Id] in table 'SalesInfo'
+ALTER TABLE [dbo].[SalesInfo]
+ADD CONSTRAINT [PK_SalesInfo]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
 
 -- Creating primary key on [Id] in table 'Managers'
 ALTER TABLE [dbo].[Managers]
@@ -102,20 +108,14 @@ ADD CONSTRAINT [PK_Products]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'SalesInfo'
-ALTER TABLE [dbo].[SalesInfo]
-ADD CONSTRAINT [PK_SalesInfo]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [ManagerId] in table 'SalesInfo'
+-- Creating foreign key on [Manager_Id] in table 'SalesInfo'
 ALTER TABLE [dbo].[SalesInfo]
 ADD CONSTRAINT [FK_ManagerSaleInfo]
-    FOREIGN KEY ([ManagerId])
+    FOREIGN KEY ([Manager_Id])
     REFERENCES [dbo].[Managers]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -124,13 +124,13 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_ManagerSaleInfo'
 CREATE INDEX [IX_FK_ManagerSaleInfo]
 ON [dbo].[SalesInfo]
-    ([ManagerId]);
+    ([Manager_Id]);
 GO
 
--- Creating foreign key on [ClientId] in table 'SalesInfo'
+-- Creating foreign key on [Client_Id] in table 'SalesInfo'
 ALTER TABLE [dbo].[SalesInfo]
 ADD CONSTRAINT [FK_ClientSaleInfo]
-    FOREIGN KEY ([ClientId])
+    FOREIGN KEY ([Client_Id])
     REFERENCES [dbo].[Clients]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -139,13 +139,13 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_ClientSaleInfo'
 CREATE INDEX [IX_FK_ClientSaleInfo]
 ON [dbo].[SalesInfo]
-    ([ClientId]);
+    ([Client_Id]);
 GO
 
--- Creating foreign key on [ProductId] in table 'SalesInfo'
+-- Creating foreign key on [Product_Id] in table 'SalesInfo'
 ALTER TABLE [dbo].[SalesInfo]
 ADD CONSTRAINT [FK_ProductSaleInfo]
-    FOREIGN KEY ([ProductId])
+    FOREIGN KEY ([Product_Id])
     REFERENCES [dbo].[Products]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -154,7 +154,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProductSaleInfo'
 CREATE INDEX [IX_FK_ProductSaleInfo]
 ON [dbo].[SalesInfo]
-    ([ProductId]);
+    ([Product_Id]);
 GO
 
 -- --------------------------------------------------

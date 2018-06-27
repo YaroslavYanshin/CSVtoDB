@@ -16,9 +16,9 @@ namespace DAL.Repository
             return new Model.SaleInfo()
             {
                 Date = Convert.ToString(saleInfo.Date),
-                ManagerId = Convert.ToString(saleInfo.ManagerId),
-                ClientId = Convert.ToString(saleInfo.ClientId),
-                ProductId = Convert.ToString(saleInfo.ProductId),
+                Manager = _context.Managers.FirstOrDefault(x=>saleInfo.ManagerId == x.Id), // new Manager() { Id = saleInfo.ManagerId }, // Convert.ToString(saleInfo.ManagerId),
+                Client =_context.Clients.FirstOrDefault(x=>saleInfo.ClientId == x.Id),
+                Product = _context.Products.FirstOrDefault(x=>saleInfo.ProductId ==x.Id),
                 Amount = Convert.ToString(saleInfo.Amount)
             };
         }
@@ -28,9 +28,9 @@ namespace DAL.Repository
             return new DAL.Models.SaleInfo()
             {
                 Date = Convert.ToDateTime(saleInfo.Date),
-                ManagerId = Convert.ToInt32( saleInfo.ManagerId),
-                ClientId = Convert.ToInt32( saleInfo.ClientId),
-                ProductId = Convert.ToInt32( saleInfo.ProductId),
+                ManagerId = Convert.ToInt32( saleInfo.Manager.Id),
+                ClientId = Convert.ToInt32( saleInfo.Client.Id),
+                ProductId = Convert.ToInt32( saleInfo.Product.Id),
                 Amount = Convert.ToDouble( saleInfo.Amount)
             };
         }
@@ -42,6 +42,8 @@ namespace DAL.Repository
 
         public void Add(DAL.Models.SaleInfo salesInfo)
         {
+            //var obj = ToEntity(salesInfo);            
+            //_context.SalesInfo.Add(obj);
             _context.SalesInfo.Add(ToEntity(salesInfo));
         }
 
@@ -64,9 +66,9 @@ namespace DAL.Repository
             {
                 Id = s.Id,
                 Date = Convert.ToDateTime(s.Date),
-                ManagerId = Convert.ToInt32(s.ManagerId),
-                ClientId = Convert.ToInt32(s.ClientId),
-                ProductId = Convert.ToInt32(s.ProductId),
+                ManagerId = Convert.ToInt32(s.Manager.Id),
+                ClientId = Convert.ToInt32(s.Client.Id),
+                ProductId = Convert.ToInt32(s.Product.Id),
                 Amount = Convert.ToDouble( s.Amount)
             }
                                             )
@@ -82,9 +84,9 @@ namespace DAL.Repository
         {
             var sale = _context.SalesInfo.FirstOrDefault(s => (s.Id == item.Id));
             sale.Date = Convert.ToString(item.Date);
-            sale.ManagerId = Convert.ToString(item.ManagerId);
-            sale.ClientId = Convert.ToString(item.ClientId);
-            sale.ProductId = Convert.ToString(item.ProductId);
+            sale.Manager = new Manager() { Id = item.ManagerId };
+            sale.Client = new Client() {Id = item.ClientId };
+            sale.Product = new Product() {Id = item.ProductId };
             sale.Amount = Convert.ToString(item.Amount);
         }
     }

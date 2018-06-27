@@ -17,9 +17,6 @@ namespace Model
         public int Id { get; set; }
         public string Date { get; set; }
         public string Amount { get; set; }
-        public string ManagerId { get; set; }
-        public string ClientId { get; set; }
-        public string ProductId { get; set; }
     
         public virtual Manager Manager { get; set; }
         public virtual Client Client { get; set; }
