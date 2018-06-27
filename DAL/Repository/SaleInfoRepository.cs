@@ -63,7 +63,7 @@ namespace DAL.Repository
             return _context.SalesInfo.Select(s => new DAL.Models.SaleInfo()
             {
                 Id = s.Id,
-                Date = Convert.ToDateTime( s.Date),
+                Date = Convert.ToDateTime(s.Date),
                 ManagerId = Convert.ToInt32(s.ManagerId),
                 ClientId = Convert.ToInt32(s.ClientId),
                 ProductId = Convert.ToInt32(s.ProductId),

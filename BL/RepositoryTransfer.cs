@@ -24,9 +24,9 @@ namespace BL
         {
             lock (_locker)
             {
-                var manager = new DAL.Models.Manager() { SecondName = saleDto.Manager };
-                var client = new DAL.Models.Client() { FullName = saleDto.Client };
-                var product = new DAL.Models.Product() { Name = saleDto.Product };
+                var manager = new DAL.Models.Manager { SecondName = saleDto.Manager };
+                var client = new DAL.Models.Client { FullName = saleDto.Client };
+                var product = new DAL.Models.Product { Name = saleDto.Product };
 
                 var managerId = _repositories.Managers.GetId(manager);
                 if (managerId == null)
